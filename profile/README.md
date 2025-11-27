@@ -1,5 +1,3 @@
-# Repositories
-
 ## AWS Click Relay
 
 [**AWS Click Relay**](https://github.com/TradersClub24/aws-click-relay) is a middleware service that sits between marketing emails and Keap (Infusionsoft). It forwards customers to Keap-based click targets without exposing the actual Keap tracking links in email bodies—all Keap links are replaced with **tc24content.de** links, improving email reputation and deliverability.
