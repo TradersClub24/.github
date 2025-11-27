@@ -1,6 +1,6 @@
 ## AWS Click Relay
 
-[**AWS Click Relay**](https://github.com/TradersClub24/aws-click-relay) is a middleware service that sits between marketing emails and Keap (Infusionsoft). It forwards customers to Keap-based click targets without exposing the actual Keap tracking links in email bodies—all Keap links are replaced with **tc24content.de** links, improving email reputation and deliverability.
+[AWS Click Relay](https://github.com/TradersClub24/aws-click-relay) is a middleware service that sits between marketing emails and Keap (Infusionsoft). It forwards customers to Keap-based click targets without exposing the actual Keap tracking links in email bodies—all Keap links are replaced with **tc24content.de** links, improving email reputation and deliverability.
 
 ### Key Features
 
@@ -16,7 +16,7 @@ Deployed on AWS ECS Fargate. Uses DynamoDB for link storage, S3 for images, Cogn
 
 ## TC24 License Service
 
-The [**TC24 License Service**](https://github.com/TradersClub24/license-service) is a Python microservice that automates trading demo account provisioning and license management. Built with aiohttp and Python 3.12, it serves as an integration layer between TradersClub24's CRM and external trading platforms.
+The [TC24 License Service](https://github.com/TradersClub24/license-service) is a Python microservice that automates trading demo account provisioning and license management. Built with aiohttp and Python 3.12, it serves as an integration layer between TradersClub24's CRM and external trading platforms.
 
 ### Core Functionality
 
@@ -59,3 +59,23 @@ The service receives email event notifications (bounces, complaints, deliveries,
 ### Deployment
 
 Infrastructure is managed with Terraform, with state stored in S3 and external dependencies pulled from shared infrastructure repositories.
+
+## AWS Email Relay
+
+The AWS Lambda-based [email-relay](https://github.com/TradersClub24/aws-email-relay) system that processes outgoing emails from Keap (formerly Infusionsoft) before forwarding them via SMTP.
+
+### Key Features
+
+- **Email Interception**: Receives emails via AWS SES and stores them in S3 for processing
+- **Link Tracking**: Replaces Keap tracking links with custom relay URLs, storing mappings in DynamoDB
+- **Image Hosting**: Uploads Keap-hosted images to S3 and rewrites URLs for improved deliverability
+- **Template Rendering**: Applies custom HTML templates for opt-in, webinar, and confirmation emails
+- **Metadata Extraction**: Parses embedded Keap metadata to determine recipients and email type
+
+### Technology Stack
+
+- **Runtime**: Node.js 18.x on AWS Lambda
+- **Infrastructure**: Terraform-managed VPC with NAT Gateway, S3, SES, DynamoDB, and Athena for log analytics
+- **Email Processing**: Uses `nodemailer` for SMTP delivery and `jsdom` for DOM manipulation
+
+The system supports multiple email templates and integrates with external click-relay infrastructure for comprehensive link and pixel tracking.
