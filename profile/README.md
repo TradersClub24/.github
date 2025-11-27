@@ -16,8 +16,6 @@
 
 Deployed on AWS ECS Fargate. Uses DynamoDB for link storage, S3 for images, Cognito for authentication, and integrates directly with the Keap API. Infrastructure is managed via Terraform with remote state stored in S3.
 
----
-
 ## TC24 License Service
 
 The [**TC24 License Service**](https://github.com/TradersClub24/license-service) is a Python microservice that automates trading demo account provisioning and license management. Built with aiohttp and Python 3.12, it serves as an integration layer between TradersClub24's CRM and external trading platforms.
@@ -37,8 +35,6 @@ Containerized with Docker and deployed to AWS ECS Fargate using Terraform. Confi
 ### Use Case
 
 When a prospect requests a demo account, CRM workflows trigger this service to automatically create their trading account, generate a license, and update their contact record—eliminating manual intervention and ensuring consistent onboarding.
-
----
 
 ## Monitoring Service
 
