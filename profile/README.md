@@ -1,3 +1,5 @@
+# Tradersclub24
+
 ## AWS Click Relay
 
 [AWS Click Relay](https://github.com/TradersClub24/aws-click-relay) is a middleware service that sits between marketing emails and Keap (Infusionsoft). It forwards customers to Keap-based click targets without exposing the actual Keap tracking links in email bodies—all Keap links are replaced with **tc24content.de** links, improving email reputation and deliverability.
@@ -79,3 +81,18 @@ The AWS Lambda-based [email-relay](https://github.com/TradersClub24/aws-email-re
 - **Email Processing**: Uses `nodemailer` for SMTP delivery and `jsdom` for DOM manipulation
 
 The system supports multiple email templates and integrates with external click-relay infrastructure for comprehensive link and pixel tracking.
+
+# Fiindo
+
+## Fiindo Infrastructure
+
+Terraform-managed AWS [infrastructure](https://github.com/TradersClub24/fiindo-infrastructure) for the Fiindo financial data platform, organized into three deployment stages:
+
+**1. Bootstrapping** — One-time setup creating the S3 bucket and DynamoDB table for Terraform state management with locking.
+
+**2. Shared Resources** — Environment-agnostic resources deployed once: ECR container repositories, GitHub Actions OIDC integration for CI/CD, ACM certificates with Cloudflare DNS validation, KMS encryption keys, AWS AppConfig, and CloudFront distributions with blue/green S3 buckets.
+
+**3. Application Environments** — Per-environment infrastructure using Terraform workspaces (`test`/`prod`). Each environment provisions a VPC with public/private subnets, an ECS Fargate cluster with Traefik reverse proxy, and multiple services: Backend API, AI Service, AWS Batch jobs for data processing, and scheduled CloudWatch events. Production additionally runs the Auth Service and Data Dashboard.
+
+External PostgreSQL databases are hosted on Hetzner with DNS managed through Cloudflare. The entire stack supports automated deployments via GitHub Actions using OIDC authentication.
+
