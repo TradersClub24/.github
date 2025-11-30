@@ -96,6 +96,28 @@ Terraform-managed AWS [infrastructure](https://github.com/TradersClub24/fiindo-i
 
 External PostgreSQL databases are hosted on Hetzner with DNS managed through Cloudflare. The entire stack supports automated deployments via GitHub Actions using OIDC authentication.
 
+## Fiindo Backend
+
+A high-performance async REST API built with **aiohttp** and **SQLAlchemy 2.0** for the Fiindo financial data platform.
+
+### Overview
+
+Fiindo Backend serves as the core API layer for delivering real-time stock market data, dividend analytics, and investment insights. It connects to PostgreSQL databases and integrates with AWS services for configuration and secrets management.
+
+### Key Features
+
+- **Stock Analytics** — Comprehensive overview, statistics, and historical data
+- **Dividend Intelligence** — Payment calendars, yield tracking, and historical charts
+- **Rating System** — Customizable scoring schemes with peer group comparisons
+- **Industry Insights** — Sector development tracking and cross-industry analysis
+
+### Tech Highlights
+
+- Fully async architecture with aiohttp 3.x
+- Pydantic 2.x for validation and serialization
+- Swagger API documentation
+- Docker-ready deployment with AWS AppConfig integration
+
 ## Auth Service
 
 [Authentication microservice](https://github.com/TradersClub24/auth-service) for Fiindo.
