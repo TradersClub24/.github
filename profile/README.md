@@ -82,6 +82,29 @@ The service receives email event notifications (bounces, complaints, deliveries,
 
 Infrastructure is managed with Terraform, with state stored in S3 and external dependencies pulled from shared infrastructure repositories.
 
+## TC24-Processes
+
+A Python toolkit for automating Keap CRM (Infusionsoft) contact management and email workflows.
+
+### Key Features
+
+- **Email Status Sync**: Synchronizes email opt-in status between Keap CRM and a local PostgreSQL database
+- **Mail Relay Integration**: Automatically generates `Email3` addresses for the mail relay system (`@mailrelay.tradersclub24.de`)
+- **Parallel Processing**: Async worker pool distributes API calls across multiple Keap API keys for faster throughput
+- **S3 Log Archival**: Maintains email logs by moving old objects from production to backup S3 buckets
+
+### Tech Stack
+
+- Python 3.12+ with async/await
+- PostgreSQL + SQLAlchemy for data persistence
+- Keap REST API integration with rate limiting and retry logic
+- AWS S3 (boto3) for log storage
+- Rich progress bars for monitoring long-running operations
+
+### Usage
+
+Scripts are executed via Poetry and configured through environment variables. The worker pool automatically manages API quotas and handles retries for failed tasks.
+
 # Fiindo
 
 ## Fiindo Infrastructure
