@@ -96,3 +96,8 @@ Terraform-managed AWS [infrastructure](https://github.com/TradersClub24/fiindo-i
 
 External PostgreSQL databases are hosted on Hetzner with DNS managed through Cloudflare. The entire stack supports automated deployments via GitHub Actions using OIDC authentication.
 
+## Auth Service
+
+[Authentication microservice](https://github.com/TradersClub24/auth-service) for Fiindo.
+
+⚠️ **Warning:** This service is a stub to not break TC24 integration. Defunct since Cognito was removed from the system.
